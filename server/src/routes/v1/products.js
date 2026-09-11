@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
   try {
     const { search } = req.query;
 
-    // ถ้ามีการส่ง ?search= มา ให้ filter กรองตามชื่อที่พิมพ์หามา
+// ถ้ามีการส่ง ?search= มา ให้ filter กรองตามชื่อที่พิมพ์หามา
     if (search) {
       const filteredProducts = products.filter((p) =>
         p.name.toLowerCase().includes(search.toLowerCase()),
@@ -16,7 +16,7 @@ router.get("/", (req, res, next) => {
       return res.status(200).json(filteredProducts);
     }
 
-    // ถ้าไม่มี search ส่งมา ก็คืนค่า products ทั้งหมด
+// ถ้าไม่มี search ส่งมา ก็คืนค่า products ทั้งหมด
     return res.status(200).json(products);
   } catch (err) {
     next(err);
@@ -108,3 +108,4 @@ router.delete("/:id", (req, res, next) => {
     next(err);
   }
 });
+

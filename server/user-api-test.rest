@@ -1,6 +1,55 @@
-### Get all products
-GET http://localhost:3001/products
+@baseUrl = http://localhost:3001
 
-### Add a product
-POST http://localhost:3001/products
+### 1. Get all products 
+GET {{baseUrl}}/products
+
+### 2. Search products by name 
+GET {{baseUrl}}/products?name=Ferrari
+
+### 2. Search by id
+GET {{baseUrl}}/products/1
+
+
+### 2. Create a new product - Success 
+POST {{baseUrl}}/products
 Content-Type: application/json
+
+{
+  "name": "Sticker (The 3rd Album)",
+  "price": 890,
+  "quantity": 20
+}
+
+### 3. Create a new product - Validation Error 
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "Regular-Irregular",
+  "price": 563,
+  "quantity": 20
+}
+
+### 4. Update a product - Not Found 
+PATCH {{baseUrl}}/products/1
+Content-Type: application/json
+
+{
+   "name": "Ay-Yo - The 4th Album Repackage"
+}
+
+### 5. Update a product by ID - Success
+PATCH {{baseUrl}}/products/1
+Content-Type: application/json
+
+{
+  "name": "SMini Ver BLINGY",
+  "price": 320,
+  "quantity": 12
+}
+
+### 6. Delete a product by ID - Success 
+DELETE {{baseUrl}}/products/4
+
+### 7. Delete a product - Not Found 
+DELETE {{baseUrl}}/products/999
